@@ -1,0 +1,30 @@
+{
+  "_note": "Real Google reviews for Fat Fish. Only entries with rating >= 4 are shown. NOTE: star ratings were assumed to be 5 from the review wording — update any that differ. Relative dates are frozen in time here; with the live Google Places API they would self-update.",
+  "reviews": [
+    {
+      "name": "Luis Quintero",
+      "rating": 5,
+      "text": "Excellent service and very good communication with the customer from the staff. I will definitely return and recommend this place to my friends and acquaintances.",
+      "date": "a year ago"
+    },
+    {
+      "name": "Victoria Hernandez",
+      "rating": 5,
+      "text": "The soups were delicious, and the sushi was yum! The staff was very friendly and they speak Spanish. I'll definitely be back soon.",
+      "date": "7 years ago"
+    },
+    {
+      "name": "Aracely Garcia",
+      "rating": 5,
+      "text": "I love it, everything is delicious, I highly recommend it, and I especially love the soybeans.",
+      "date": "5 years ago"
+    },
+    {
+      "name": "Michelle",
+      "rating": 5,
+      "text": "Came here for my last meal in the country for a while, and it couldn’t have been a better choice.",
+      "date": "a month ago"
+    }
+  ]
+}
+

@@ -1,0 +1,1129 @@
+{
+  "_note": "Menu content per location. 'style': 'tags' renders Name + light detail; 'described' renders a bold label + description. 'columns' sets the grid width. 'note' holds the parent Toast menu name. An item with \"available\": false renders struck-through (tags: 'Sold out' badge; described drinks: inline strikethrough). BOTH locations are generated from live Toast dumps by scripts/toast-to-menu.mjs (per-location config: West Valley uses KITCHEN/DRINKS, Bountiful uses WOK & POT/DRINK). Sold-out flags come from Toast stock:read. Re-run that script to refresh; later this becomes the Vercel function.",
+  "locations": [
+    {
+      "id": "west-valley",
+      "label": "West Valley",
+      "address": "1980 W 3500 S",
+      "sections": [
+        {
+          "title": "Featured Items",
+          "note": "Chef's picks — placeholder",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Omakase"
+            },
+            {
+              "name": "Chef's Choice"
+            },
+            {
+              "name": "Otoro"
+            }
+          ]
+        },
+        {
+          "title": "Sushi Bar",
+          "note": "Nigiri or Sashimi",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Bincho Maguro"
+            },
+            {
+              "name": "Hamachi"
+            },
+            {
+              "name": "Maguro"
+            },
+            {
+              "name": "Masago"
+            },
+            {
+              "name": "Ocean Trout"
+            },
+            {
+              "name": "Ono"
+            },
+            {
+              "name": "Sake"
+            },
+            {
+              "name": "Tobiko"
+            },
+            {
+              "name": "Unagi"
+            }
+          ],
+          "link": {
+            "label": "View Sushi Rolls",
+            "href": "assets/pdf/west-valley-sushi-rolls.pdf"
+          }
+        },
+        {
+          "title": "Sides",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Edamame (GF)"
+            },
+            {
+              "name": "Spicy Edamame"
+            },
+            {
+              "name": "Firecracker Calamari"
+            },
+            {
+              "name": "Jalapeno Bomb"
+            },
+            {
+              "name": "Gyoza"
+            },
+            {
+              "name": "Miso"
+            },
+            {
+              "name": "Seaweed Salad"
+            },
+            {
+              "name": "Seaweed/Squid Salad"
+            },
+            {
+              "name": "Squid Salad"
+            },
+            {
+              "name": "Side of Noodles (GF)"
+            },
+            {
+              "name": "Side of Rice (GF)"
+            },
+            {
+              "name": "Side Salad"
+            },
+            {
+              "name": "Tempura Shrimp"
+            },
+            {
+              "name": "Tempura Veggie"
+            },
+            {
+              "name": "Chili Oil"
+            },
+            {
+              "name": "Hoisin"
+            },
+            {
+              "name": "Honey Vinaigrette"
+            },
+            {
+              "name": "Sriracha (GF)"
+            },
+            {
+              "name": "Sweet Chili"
+            },
+            {
+              "name": "Teriyaki Sauce"
+            }
+          ]
+        },
+        {
+          "title": "Pho",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "P1 Pho Dac Biet (GF)"
+            },
+            {
+              "name": "P2 Chin, Gau, Sach (GF)"
+            },
+            {
+              "name": "P3 Tai, Chin, Gau, Gan, Sach (GF)"
+            },
+            {
+              "name": "P4 Tai, Chin, Gan, Sach (GF)"
+            },
+            {
+              "name": "P5 Tai, Gan, Sach (GF)"
+            },
+            {
+              "name": "P6 Tai, Gan (GF)"
+            },
+            {
+              "name": "P7 Tai, Sach (GF)"
+            },
+            {
+              "name": "P8 Tai, Chin (GF)"
+            },
+            {
+              "name": "P10 Chin, Bo Vien (GF)"
+            },
+            {
+              "name": "P11 Gau, Bo Vien (GF)"
+            },
+            {
+              "name": "P12 Tai, Bo Vien (GF)"
+            },
+            {
+              "name": "P13 Tai (GF)"
+            },
+            {
+              "name": "P14 Bo Vien (GF)"
+            },
+            {
+              "name": "P15 Pho Ga (GF)"
+            },
+            {
+              "name": "P16 Pho Chay (GF)"
+            },
+            {
+              "name": "Brisket Only Pho (GF)"
+            },
+            {
+              "name": "Kids Pho (GF)"
+            },
+            {
+              "name": "Noodle Only Pho (GF)"
+            },
+            {
+              "name": "Pho Broth Only (GF)"
+            },
+            {
+              "name": "SMALL CHICKEN PHO"
+            }
+          ],
+          "note": "Rice noodle soup"
+        },
+        {
+          "title": "Bento Box",
+          "note": "Choice of protein, served w/ salad, California roll & rice",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Teriyaki Chicken"
+            },
+            {
+              "name": "Teriyaki Beef"
+            },
+            {
+              "name": "Korean Short Rib"
+            },
+            {
+              "name": "Beef Curry"
+            },
+            {
+              "name": "Chicken Curry"
+            },
+            {
+              "name": "Veggie Curry"
+            }
+          ]
+        },
+        {
+          "title": "Beer",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "",
+              "items": [
+                {
+                  "name": "Asahi"
+                },
+                {
+                  "name": "Bud Light",
+                  "available": false
+                },
+                {
+                  "name": "Corona"
+                },
+                {
+                  "name": "Feelin' Hazy IPA",
+                  "available": false
+                },
+                {
+                  "name": "Ghostrider IPA",
+                  "available": false
+                },
+                {
+                  "name": "Kirin Ichiban (LG)"
+                },
+                {
+                  "name": "Michelob Ultra"
+                },
+                {
+                  "name": "Modelo",
+                  "available": false
+                },
+                {
+                  "name": "Pacifico",
+                  "available": false
+                },
+                {
+                  "name": "Sapporo (LG)"
+                },
+                {
+                  "name": "Wasatch",
+                  "available": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Wine",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "",
+              "items": [
+                {
+                  "name": "Cave de Lugny  Chardonnay"
+                },
+                {
+                  "name": "Josh Cellar Cabernet Sauvignon"
+                },
+                {
+                  "name": "Matua Sauvignon Blanc",
+                  "available": false
+                },
+                {
+                  "name": "Mirassou Pinot Noir",
+                  "available": false
+                },
+                {
+                  "name": "NOBILO SAUVIGNON BLANC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Sake",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "",
+              "items": [
+                {
+                  "name": "Berry Haze"
+                },
+                {
+                  "name": "Bone Apple Tea",
+                  "available": false
+                },
+                {
+                  "name": "Life's A Peach",
+                  "available": false
+                },
+                {
+                  "name": "Hot Sake"
+                },
+                {
+                  "name": "Momokawa Diamond (Cold)"
+                },
+                {
+                  "name": "Momokawa Pearl (Cold)"
+                },
+                {
+                  "name": "Momokawa Silver (Cold)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Beverages & Desserts",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "Dessert",
+              "items": [
+                {
+                  "name": "Ice Cream"
+                },
+                {
+                  "name": "Cinnamon Blossom"
+                },
+                {
+                  "name": "Molten Lava Cake"
+                },
+                {
+                  "name": "RED VELVET",
+                  "available": false
+                },
+                {
+                  "name": "Mochi Ice Cream",
+                  "available": false
+                },
+                {
+                  "name": "Cheese Cake",
+                  "available": false
+                },
+                {
+                  "name": "Roses are Red Mousse Cake",
+                  "available": false
+                },
+                {
+                  "name": "MOCHI ICE CREAM"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bountiful",
+      "label": "Bountiful",
+      "address": "595 W 2600 S",
+      "sections": [
+        {
+          "title": "Featured Items",
+          "note": "Chef's picks — placeholder",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Omakase"
+            },
+            {
+              "name": "Chef's Choice"
+            },
+            {
+              "name": "Otoro"
+            }
+          ]
+        },
+        {
+          "title": "Sushi Bar",
+          "note": "Nigiri or Sashimi",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Alaskan"
+            },
+            {
+              "name": "Bincho Maguro"
+            },
+            {
+              "name": "Hamachi"
+            },
+            {
+              "name": "Maguro"
+            },
+            {
+              "name": "Ono"
+            },
+            {
+              "name": "Sake"
+            },
+            {
+              "name": "Umimasu"
+            },
+            {
+              "name": "Unagi"
+            },
+            {
+              "name": "Omakase"
+            },
+            {
+              "name": "Ebi"
+            },
+            {
+              "name": "Otoro"
+            },
+            {
+              "name": "Blue Fin Tuna"
+            },
+            {
+              "name": "King Salmon"
+            },
+            {
+              "name": "Madai Seabream",
+              "available": false
+            },
+            {
+              "name": "Hiramasa Kingfish Yellowtail",
+              "available": false
+            },
+            {
+              "name": "Gunkan Uni",
+              "available": false
+            }
+          ],
+          "link": {
+            "label": "View Sushi Rolls",
+            "href": "assets/pdf/bountiful-sushi-rolls.pdf"
+          }
+        },
+        {
+          "title": "Sides",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Jalapeno Bomb"
+            },
+            {
+              "name": "Mussel Shooters"
+            },
+            {
+              "name": "Seaweed Salad"
+            },
+            {
+              "name": "Squid Salad"
+            },
+            {
+              "name": "Seaweed/Squid Salad"
+            },
+            {
+              "name": "Sushi Rice (GF)"
+            }
+          ]
+        },
+        {
+          "title": "Pho",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "P1 Pho Dac Biet (GF)"
+            },
+            {
+              "name": "P2 Chin, Gau, Sach (GF)"
+            },
+            {
+              "name": "P3 Tai, Chin, Gau, Gan, Sach (GF)"
+            },
+            {
+              "name": "P4 Tai, Chin, Gan, Sach (GF)"
+            },
+            {
+              "name": "P5 Tai, Gan, Sach (GF)"
+            },
+            {
+              "name": "P6 Tai, Gan (GF)"
+            },
+            {
+              "name": "P7 Tai, Sach (GF)"
+            },
+            {
+              "name": "P8 Tai, Chin (GF)"
+            },
+            {
+              "name": "P10 Chin, Bo Vien (GF)"
+            },
+            {
+              "name": "P11 Gau, Bo Vien (GF)"
+            },
+            {
+              "name": "P12 Tai, Bo Vien (GF)"
+            },
+            {
+              "name": "P13 Tai (GF)"
+            },
+            {
+              "name": "P14 Bo Vien (GF)"
+            },
+            {
+              "name": "P15 Pho Ga (GF)"
+            },
+            {
+              "name": "P16 Pho Chay (GF)"
+            },
+            {
+              "name": "P17 Pho Tom (GF)"
+            },
+            {
+              "name": "Brisket Only Pho (GF)"
+            },
+            {
+              "name": "Kids Pho (GF)"
+            },
+            {
+              "name": "Noodle Only Pho"
+            },
+            {
+              "name": "Broth Only"
+            }
+          ],
+          "note": "Rice noodle soup"
+        },
+        {
+          "title": "Bento Box",
+          "note": "Choice of protein, served w/ salad, California roll & rice",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Filet Mignon"
+            },
+            {
+              "name": "Korean Short Ribs"
+            },
+            {
+              "name": "Teriyaki Beef"
+            },
+            {
+              "name": "Teriyaki Chicken"
+            },
+            {
+              "name": "Yellow Curry Chicken"
+            },
+            {
+              "name": "Yellow Curry Shrimp"
+            },
+            {
+              "name": "Yellow Curry Tofu"
+            }
+          ]
+        },
+        {
+          "title": "Entrées",
+          "style": "tags",
+          "columns": 3,
+          "items": [
+            {
+              "name": "Garlic Noodle"
+            },
+            {
+              "name": "Yakisoba"
+            },
+            {
+              "name": "Drunken Noodle"
+            },
+            {
+              "name": "Fried Rice"
+            },
+            {
+              "name": "Dinner Entree"
+            },
+            {
+              "name": "Fat Salad"
+            }
+          ],
+          "note": "Choice of chicken, beef, shrimp, tofu, or vegetables"
+        },
+        {
+          "title": "Beer",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "Draft",
+              "items": [
+                {
+                  "name": "Bohemian, Noble Hefeweizen"
+                },
+                {
+                  "name": "Epic Lunar Transit IPA"
+                },
+                {
+                  "name": "Michelob Ultra"
+                },
+                {
+                  "name": "New Belgium, Fat Tire Amber"
+                },
+                {
+                  "name": "Sapporo"
+                },
+                {
+                  "name": "Kirin Ichiban Malted",
+                  "available": false
+                },
+                {
+                  "name": "Stella Artois"
+                }
+              ]
+            },
+            {
+              "label": "Bottled",
+              "items": [
+                {
+                  "name": "Angry Orchard",
+                  "available": false
+                },
+                {
+                  "name": "Asahi Super Dry"
+                },
+                {
+                  "name": "Budlight",
+                  "available": false
+                },
+                {
+                  "name": "Devastator Double Bock Lager Wasatch"
+                },
+                {
+                  "name": "Feeling Hazy",
+                  "available": false
+                },
+                {
+                  "name": "Kirin Ichiban Malted Beer"
+                },
+                {
+                  "name": "San Miguel Dark Lager",
+                  "available": false
+                },
+                {
+                  "name": "San Miguel Pale Pilsen",
+                  "available": false
+                },
+                {
+                  "name": "Sculpin Ballast Point IPA"
+                },
+                {
+                  "name": "Chasing Ghosts IPA Double Hazy",
+                  "available": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Wine",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "",
+              "items": [
+                {
+                  "name": "Kikkoman Plum Wine"
+                }
+              ]
+            },
+            {
+              "label": "Red Wine",
+              "items": [
+                {
+                  "name": "3 Thieves Cabernet"
+                },
+                {
+                  "name": "Apothic Red Blend"
+                },
+                {
+                  "name": "Josh Cellar Cabernet Sauvignon"
+                },
+                {
+                  "name": "Josh Cellar Pinot Noir"
+                },
+                {
+                  "name": "Mirassou Pinot Noir"
+                },
+                {
+                  "name": "Apothic Crush Soft Blend"
+                },
+                {
+                  "name": "Woodbridge Cabernet Sauvignon"
+                },
+                {
+                  "name": "Josh Hearth Cabernet Sauvignon"
+                }
+              ]
+            },
+            {
+              "label": "Sparkling",
+              "items": [
+                {
+                  "name": "Zonin Prosecco"
+                },
+                {
+                  "name": "Riesling Prickly Frisk"
+                }
+              ]
+            },
+            {
+              "label": "White Wine",
+              "items": [
+                {
+                  "name": "Matua Sauvignon Blanc"
+                },
+                {
+                  "name": "Nobilo Sauvignon Blanc"
+                },
+                {
+                  "name": "Riff Pinot Grigio"
+                },
+                {
+                  "name": "Woodbridge Chardonnay"
+                },
+                {
+                  "name": "Woodbridge Sauvignon Blanc",
+                  "available": false
+                },
+                {
+                  "name": "Kim Crawford Sauvignon Blanc"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Sake",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "Hot Sake",
+              "items": [
+                {
+                  "name": "Gekkeikan"
+                },
+                {
+                  "name": "Berry Haze"
+                },
+                {
+                  "name": "Purple Haze"
+                }
+              ]
+            },
+            {
+              "label": "Cold Sake",
+              "items": [
+                {
+                  "name": "Lychee Sake"
+                },
+                {
+                  "name": "Momokawa Diamond"
+                },
+                {
+                  "name": "Momokawa Pearl"
+                },
+                {
+                  "name": "Momokawa Silver"
+                },
+                {
+                  "name": "Tozai Snow Maiden"
+                },
+                {
+                  "name": "Ty Ku Cucumber Junmai",
+                  "available": false
+                },
+                {
+                  "name": "Yoshi No Gawa Winter Warrior"
+                },
+                {
+                  "name": "Tozai Plum Blossom of Peace"
+                },
+                {
+                  "name": "Yomi The Afterlife JG Can"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Liquor",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "Cognac",
+              "items": [
+                {
+                  "name": "Hennessy VS Cognac"
+                }
+              ]
+            },
+            {
+              "label": "Gin",
+              "items": [
+                {
+                  "name": "Broker's London Dry Gin"
+                },
+                {
+                  "name": "Dented Brick Gin"
+                },
+                {
+                  "name": "Hendrick's Gin"
+                },
+                {
+                  "name": "Ransom London Dry",
+                  "available": false
+                }
+              ]
+            },
+            {
+              "label": "Jinro Soju Shots",
+              "items": [
+                {
+                  "name": "Jinro Soju Chamisul Shot"
+                },
+                {
+                  "name": "Jinro Soju Green Grape Shot"
+                },
+                {
+                  "name": "Jinro Soju Peach Shot"
+                },
+                {
+                  "name": "Jinro Soju Plum Shot"
+                }
+              ]
+            },
+            {
+              "label": "Rum",
+              "items": [
+                {
+                  "name": "Dented Brick Rum"
+                },
+                {
+                  "name": "Don Q Cristal Rum"
+                },
+                {
+                  "name": "Goslings Black Seal Rum"
+                },
+                {
+                  "name": "Malibu Coconut Rum"
+                },
+                {
+                  "name": "Captain Morgan 100"
+                },
+                {
+                  "name": "Captain Morgan Private Stock"
+                }
+              ]
+            },
+            {
+              "label": "Scotch/Bourbon",
+              "items": [
+                {
+                  "name": "Balvenie Doublewood 12 yr"
+                },
+                {
+                  "name": "Glenlivet Single Malt 12 yr"
+                },
+                {
+                  "name": "Laphroig 10 yr"
+                }
+              ]
+            },
+            {
+              "label": "Tequila",
+              "items": [
+                {
+                  "name": "Espolon Blanco"
+                },
+                {
+                  "name": "Espolon Reposado"
+                },
+                {
+                  "name": "Lunazul Blanco"
+                },
+                {
+                  "name": "Patron"
+                }
+              ]
+            },
+            {
+              "label": "Vodka",
+              "items": [
+                {
+                  "name": "Absolut Pear Vodka"
+                },
+                {
+                  "name": "Absolut Raspberry"
+                },
+                {
+                  "name": "Dented Brick Vodka"
+                },
+                {
+                  "name": "Grey Goose"
+                },
+                {
+                  "name": "Ketel One Grapefruit Rose"
+                },
+                {
+                  "name": "Ketel One Peach Orange Blossom"
+                },
+                {
+                  "name": "Prairie Organic Cucumber"
+                },
+                {
+                  "name": "Tito's Vodka"
+                }
+              ]
+            },
+            {
+              "label": "Whiskey",
+              "items": [
+                {
+                  "name": "Buffalo Trace Bourbon",
+                  "available": false
+                },
+                {
+                  "name": "Crown Royal"
+                },
+                {
+                  "name": "George Dickel Rye"
+                },
+                {
+                  "name": "Jack Daniels"
+                },
+                {
+                  "name": "Jameson"
+                },
+                {
+                  "name": "Jim Beam"
+                },
+                {
+                  "name": "Knob Creek Bourbon"
+                },
+                {
+                  "name": "Rittenhouse Rye"
+                },
+                {
+                  "name": "Woodford Reserve Bourbon"
+                },
+                {
+                  "name": "HATOZAKI"
+                },
+                {
+                  "name": "Fireball Cinnamon Whiskey"
+                },
+                {
+                  "name": "TOKI Suntory Whiskey"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Beverages & Desserts",
+          "style": "grouped",
+          "columns": 2,
+          "groups": [
+            {
+              "label": "Seasonal Cocktails",
+              "items": [
+                {
+                  "name": "PEACH SAKETINI"
+                },
+                {
+                  "name": "LONDON'S PICK"
+                },
+                {
+                  "name": "PIÑA COLADA"
+                },
+                {
+                  "name": "GINGER BUCK"
+                },
+                {
+                  "name": "VERY ANGRY CRAB"
+                },
+                {
+                  "name": "CAPTAIN'S PUNCH"
+                },
+                {
+                  "name": "GINGER MULE"
+                },
+                {
+                  "name": "TROPIC PINEAPPLE MIMOSA"
+                },
+                {
+                  "name": "LUCKY BLUE MIMOSA"
+                },
+                {
+                  "name": "MIDNIGHT BERRY MIMOSA"
+                },
+                {
+                  "name": "ISLAND COCONUT MIMOSA"
+                },
+                {
+                  "name": "TOKIO NIGHT"
+                }
+              ]
+            },
+            {
+              "label": "Fizzy Lemonades",
+              "items": [
+                {
+                  "name": "Raspberry Lemonade (Fizzy)"
+                },
+                {
+                  "name": "Strawberry Lemonade (Fizzy)"
+                },
+                {
+                  "name": "Blueberry Lemonade (Fizzy)"
+                },
+                {
+                  "name": "Strawberry Mango Lemonade (Fizzy)"
+                },
+                {
+                  "name": "Berry Mix Lemonade (Fizzy)"
+                }
+              ]
+            },
+            {
+              "label": "Smooth Lemonades",
+              "items": [
+                {
+                  "name": "Peach Lemonade (Smooth)"
+                },
+                {
+                  "name": "Strawberry Lemonade (Smooth)"
+                },
+                {
+                  "name": "Mango Lemonade (Smooth)"
+                },
+                {
+                  "name": "Blackberry Lemonade (Smooth)"
+                },
+                {
+                  "name": "Passion Fruit Lemonade (Smooth)"
+                },
+                {
+                  "name": "Lychee Lemonade (Smooth)"
+                }
+              ]
+            },
+            {
+              "label": "Dessert",
+              "items": [
+                {
+                  "name": "Molten Lava Cake"
+                },
+                {
+                  "name": "Triple Chocolate Mousse Cake"
+                },
+                {
+                  "name": "Employee Cake"
+                },
+                {
+                  "name": "Ice cream"
+                },
+                {
+                  "name": "Sundae"
+                },
+                {
+                  "name": "Grandma's Carrot Cake"
+                },
+                {
+                  "name": "Rainbow Iced Sprinkle Cake",
+                  "available": false
+                },
+                {
+                  "name": "Raspberry Donut Cheesecake"
+                },
+                {
+                  "name": "Mochi Ice Cream (GF) Assortment"
+                },
+                {
+                  "name": "Mango Ice cream Fruit Pop"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
