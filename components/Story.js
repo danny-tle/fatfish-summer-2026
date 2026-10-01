@@ -1,15 +1,17 @@
 "use client";
 import Reveal from "./Reveal";
 import { useLocation } from "@/context/LocationContext";
+import { STORY_IMAGES } from "@/lib/locations";
 
 export default function Story() {
   const { activeId, location, fading } = useLocation();
   const dir = activeId || "west-valley";
+  const [first, second] = STORY_IMAGES[dir] || STORY_IMAGES["west-valley"];
 
   return (
     <section className="thirds" id="story">
       <Reveal className="thirds__media" stagger={0}>
-        <img data-locimg="mural.png" src={`/img/${dir}/mural.png`} alt="Fat Fish mural" loading="lazy" />
+        <img data-locimg={first.file} src={`/img/${dir}/${first.file}`} alt={first.alt} loading="lazy" />
       </Reveal>
       <Reveal className="thirds__text" stagger={1}>
         <p className="kicker story__kicker">{location ? location.kicker : "Fat Fish — West Valley"}</p>
@@ -20,7 +22,7 @@ export default function Story() {
         </p>
       </Reveal>
       <Reveal className="thirds__media thirds__media--tall" stagger={2}>
-        <img data-locimg="sakeAndSushi.png" src={`/img/${dir}/sakeAndSushi.png`} alt="Sake and sushi" loading="lazy" />
+        <img data-locimg={second.file} src={`/img/${dir}/${second.file}`} alt={second.alt} loading="lazy" />
       </Reveal>
     </section>
   );

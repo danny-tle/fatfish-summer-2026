@@ -2,9 +2,7 @@
 import { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { LOCATIONS } from "@/lib/locations";
 
-// the react version of script.js's onLocation()/setLocation() pub-sub. every
-// section that needs to know "which store is active" reads it from here
-// instead of subscribing by hand.
+// holds which store is active. every section that cares reads it from here.
 const LocationCtx = createContext(null);
 
 export function LocationProvider({ children }) {
@@ -16,9 +14,7 @@ export function LocationProvider({ children }) {
     setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
 
-  // story text/photos cross-fade via CSS selectors keyed off this body class
-  // (body.loc-fading [data-locimg], same as the vite site) rather than each
-  // component tracking its own fade state
+  // this body class drives the CSS cross-fade for the story text and photos
   useEffect(() => {
     document.body.classList.toggle("loc-fading", fading);
   }, [fading]);

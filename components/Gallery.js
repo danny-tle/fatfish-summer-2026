@@ -7,9 +7,10 @@ export default function Gallery() {
   const { activeId } = useLocation();
   const dir = activeId || "west-valley";
 
-  // set B is a duplicate, hidden from assistive tech, so the marquee loop
-  // (translateX -50%) always has a second copy to slide into
-  const slides = [...GALLERY_IMAGES.map((s) => ({ ...s, hidden: false })), ...GALLERY_IMAGES.map((s) => ({ ...s, hidden: true }))];
+  const images = GALLERY_IMAGES[dir] || GALLERY_IMAGES["west-valley"];
+
+  // second copy of the set so the -50% marquee loop is seamless
+  const slides = [...images.map((s) => ({ ...s, hidden: false })), ...images.map((s) => ({ ...s, hidden: true }))];
 
   return (
     <section className="marquee" aria-label="Sushi gallery" aria-roledescription="auto-scrolling gallery">

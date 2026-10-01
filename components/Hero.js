@@ -5,8 +5,7 @@ import Reveal from "./Reveal";
 const ADDRS = ["1980 W 3500 S · West Valley City, UT 84119", "595 W 2600 S · Bountiful, UT 84010"];
 const CITIES = ["West Valley City, UT", "Bountiful, UT"];
 
-// independent of the site's active-location picker — this just auto-cycles
-// the two addresses on its own timer, same as the vite version.
+// cycles the two addresses on a timer. separate from the location picker.
 function useFlipRotate(reduceMotion) {
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState("idle"); // idle | out | in
@@ -27,8 +26,7 @@ function useFlipRotate(reduceMotion) {
 
   useEffect(() => {
     if (phase !== "in") return;
-    // force a reflow on both tiles so the "jump to the far edge" actually
-    // registers before the transition back to flat runs
+    // force a reflow so the flip restarts from the far edge
     if (addrRef.current) void addrRef.current.offsetWidth;
     if (cityRef.current) void cityRef.current.offsetWidth;
     setPhase("idle");
@@ -66,30 +64,30 @@ export default function Hero() {
 
   return (
     <section className="hero" id="hero">
-      <svg className="hero__backdrop" viewBox="0 0 64 40" aria-hidden="true">
-        <use href="#pufferfish" />
-      </svg>
-
-      <div className="hero__inner">
-        <h1 className="hero__title">
-          <Reveal as="span">INVENTIVE SUSHI</Reveal>
-          <Reveal as="span">&amp; PHO, CRAFTED</Reveal>
-          <Reveal as="span">WITH INTENTION</Reveal>
-        </h1>
-        <Reveal as="p" className="hero__sub">
-          <span className={"hero__addr " + flipClass} ref={addrRef}>{ADDRS[index]}</span>
-        </Reveal>
+      <div className="hero__backdrop" aria-hidden="true">
+        {/* above the fold, so no lazy load. opacity/grayscale knobs are in globals.css */}
+        <img src="/img/hero.jpg" alt="" fetchPriority="high" />
       </div>
 
-      <Reveal className="hero__scroll">
-        <span>Scroll</span>
-        <i></i>
-      </Reveal>
+      {/* headline is off for now. hidden h1 so the page still has one */}
+      <h1 className="sr-only">Fat Fish &mdash; Inventive Sushi &amp; Pho</h1>
 
-      <Reveal className="hero__time">
-        <span className={"hero__timeCity " + flipClass} ref={cityRef}>{CITIES[index]}</span>
-        <span className="hero__clock">{clock}</span>
-      </Reveal>
+      {/* scroll cue + rotating address + clock, all one row */}
+      <div className="hero__foot">
+        <Reveal className="hero__scroll" immediate>
+          <span>Scroll</span>
+          <i></i>
+        </Reveal>
+
+        <Reveal as="p" className="hero__sub" immediate>
+          <span className={"hero__addr " + flipClass} ref={addrRef}>{ADDRS[index]}</span>
+        </Reveal>
+
+        <Reveal className="hero__time" immediate>
+          <span className={"hero__timeCity " + flipClass} ref={cityRef}>{CITIES[index]}</span>
+          <span className="hero__clock">{clock}</span>
+        </Reveal>
+      </div>
     </section>
   );
 }

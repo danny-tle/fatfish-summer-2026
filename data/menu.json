@@ -8,7 +8,7 @@
       "sections": [
         {
           "title": "Featured Items",
-          "note": "Chef's picks — placeholder",
+          "note": "Chef's picks",
           "style": "tags",
           "columns": 3,
           "items": [
@@ -387,7 +387,7 @@
       "sections": [
         {
           "title": "Featured Items",
-          "note": "Chef's picks — placeholder",
+          "note": "Chef's picks",
           "style": "tags",
           "columns": 3,
           "items": [

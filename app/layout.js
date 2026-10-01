@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Fat Fish — Inventive Sushi & Pho · West Valley City, UT",
+  title: "Fat Fish",
   description: "Fat Fish is West Valley City's go-to place for inventive sushi and pho. An industrial space, a welcoming staff, and a modern vibe.",
 };
 

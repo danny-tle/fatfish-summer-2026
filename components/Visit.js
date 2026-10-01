@@ -1,8 +1,7 @@
 import Reveal from "./Reveal";
 import { LOCATIONS } from "@/lib/locations";
 
-// always shows both locations side by side — not tied to the active-location
-// picker, same as the vite site (visit/contact don't switch, only menu/order/story do)
+// always shows both stores. doesn't follow the location picker.
 export default function Visit() {
   const wv = LOCATIONS["west-valley"];
   const bt = LOCATIONS["bountiful"];

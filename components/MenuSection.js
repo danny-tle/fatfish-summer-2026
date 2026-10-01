@@ -1,9 +1,11 @@
-// renders one section (Sushi Bar, Pho, Beer, ...). same three styles as the
-// vite site's buildSection(): "grouped" (drinks — subcategory blocks), "described"
-// (name + detail/parts), and the tags default (plain n-across list).
+"use client";
+import Reveal from "./Reveal";
+
+// one menu section. three layouts: grouped (drinks), described, or the default tag list.
+// root is a Reveal so each section animates in on scroll (see .menu.reveal)
 export default function MenuSection({ section }) {
   return (
-    <div className="menu">
+    <Reveal className="menu">
       <h3 className="menu__title">
         {section.title}{" "}
         {section.note && <span>{section.note}</span>}
@@ -34,7 +36,7 @@ export default function MenuSection({ section }) {
           {section.link.label || "View more"}
         </a>
       )}
-    </div>
+    </Reveal>
   );
 }
 

@@ -1,20 +1,17 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-// react version of script.js's scroll-reveal: the vanilla site rolled its own
-// scroll-position check instead of IntersectionObserver (a note in the source
-// said IO didn't fire in some headless/preview renderer they'd used) — in a
-// real browser IO is the standard tool for exactly this, so that's what this
-// uses. stagger mirrors the original's per-item delay for the "thirds" gallery
-// row (index * 120ms, capped at 4 steps) — everything else lets the
-// stylesheet's own per-element transition-delay (hero title lines, etc) apply.
-export default function Reveal({ as: Tag = "div", stagger, className = "", children, ...rest }) {
+// scroll-reveal wrapper: adds .is-visible once the element scrolls into view.
+// stagger sets a per-item transition delay (index * 120ms, capped at 4).
+export default function Reveal({ as: Tag = "div", stagger, immediate = false, className = "", children, ...rest }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
+    // immediate skips the observer. bottom-pinned content never trips the
+    // -12% bottom inset at scroll 0, so it would otherwise stay hidden.
+    if (reduceMotion || immediate) {
       setVisible(true);
       return;
     }
@@ -31,7 +28,7 @@ export default function Reveal({ as: Tag = "div", stagger, className = "", child
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [immediate]);
 
   const style = typeof stagger === "number" ? { transitionDelay: Math.min(stagger, 4) * 120 + "ms" } : undefined;
 

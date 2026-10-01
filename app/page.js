@@ -3,6 +3,7 @@ import { LocationProvider } from "@/context/LocationContext";
 import SplashPicker from "@/components/SplashPicker";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Social from "@/components/Social";
 import Story from "@/components/Story";
 import Reviews from "@/components/Reviews";
 import Gallery from "@/components/Gallery";
@@ -23,6 +24,7 @@ export default async function HomePage() {
       <Header />
       <main id="top">
         <Hero />
+        <Social />
         <Story />
         <Reviews />
         <Gallery />
