@@ -4,7 +4,7 @@ import { useLocation } from "@/context/LocationContext";
 import { STORY_IMAGES } from "@/lib/locations";
 
 export default function Story() {
-  const { activeId, location, fading } = useLocation();
+  const { activeId, location } = useLocation();
   const dir = activeId || "west-valley";
   const [first, second] = STORY_IMAGES[dir] || STORY_IMAGES["west-valley"];
 

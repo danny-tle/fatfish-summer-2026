@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
+import { useReduceMotion } from "@/hooks/useReduceMotion";
 
 const ADDRS = ["1980 W 3500 S · West Valley City, UT 84119", "595 W 2600 S · Bountiful, UT 84010"];
 const CITIES = ["West Valley City, UT", "Bountiful, UT"];
@@ -24,12 +25,16 @@ function useFlipRotate(reduceMotion) {
     return () => window.clearInterval(id);
   }, [reduceMotion]);
 
+  // next frame, so the browser has painted the flipped-over state before we
+  // force a reflow and let it transition back to flat
   useEffect(() => {
     if (phase !== "in") return;
-    // force a reflow so the flip restarts from the far edge
-    if (addrRef.current) void addrRef.current.offsetWidth;
-    if (cityRef.current) void cityRef.current.offsetWidth;
-    setPhase("idle");
+    const raf = requestAnimationFrame(() => {
+      if (addrRef.current) void addrRef.current.offsetWidth;
+      if (cityRef.current) void cityRef.current.offsetWidth;
+      setPhase("idle");
+    });
+    return () => cancelAnimationFrame(raf);
   }, [phase]);
 
   const flipClass = phase === "out" ? "flip-out" : phase === "in" ? "flip-in" : "";
@@ -46,7 +51,8 @@ function useClock() {
       const s = String(now.getSeconds()).padStart(2, "0");
       setText("— " + h + ":" + m + ":" + s);
     }
-    tick();
+    // no first tick here: the picker covers the hero for longer than a second,
+    // so nobody sees the blank, and it keeps setState out of the effect body.
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
   }, []);
@@ -54,11 +60,7 @@ function useClock() {
 }
 
 export default function Hero() {
-  const [reduceMotion, setReduceMotion] = useState(false);
-  useEffect(() => {
-    setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
+  const reduceMotion = useReduceMotion();
   const { index, flipClass, addrRef, cityRef } = useFlipRotate(reduceMotion);
   const clock = useClock();
 

@@ -1,26 +1,27 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useReduceMotion } from "@/hooks/useReduceMotion";
 
 // scroll-reveal wrapper: adds .is-visible once the element scrolls into view.
 // stagger sets a per-item transition delay (index * 120ms, capped at 4).
 export default function Reveal({ as: Tag = "div", stagger, immediate = false, className = "", children, ...rest }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const [seen, setSeen] = useState(false);
+  const reduceMotion = useReduceMotion();
+
+  // immediate skips the observer. bottom-pinned content never trips the
+  // -12% bottom inset at scroll 0, so it would otherwise stay hidden.
+  const skip = reduceMotion || immediate;
+  const visible = seen || skip;
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // immediate skips the observer. bottom-pinned content never trips the
-    // -12% bottom inset at scroll 0, so it would otherwise stay hidden.
-    if (reduceMotion || immediate) {
-      setVisible(true);
-      return;
-    }
+    if (skip) return;
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          setSeen(true);
           obs.disconnect();
         }
       },
@@ -28,7 +29,7 @@ export default function Reveal({ as: Tag = "div", stagger, immediate = false, cl
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [immediate]);
+  }, [skip]);
 
   const style = typeof stagger === "number" ? { transitionDelay: Math.min(stagger, 4) * 120 + "ms" } : undefined;
 
