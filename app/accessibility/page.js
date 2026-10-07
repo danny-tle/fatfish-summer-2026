@@ -28,8 +28,10 @@ export default function AccessibilityPage() {
         <li>Text meets AA color contrast, and the site honors your device&rsquo;s reduced-motion setting.</li>
         <li>Moving content, like the photo gallery and rotating address, has a pause button.</li>
         <li>
-          The accessibility button in the corner of every page lets you enlarge text, add spacing, switch to a plainer
-          font, stop animations, raise contrast, and more. Your choices are saved on your device.
+          The accessibility button in the corner of every page lets you enlarge text, adjust line height and spacing,
+          switch to a low-vision or dyslexia-friendly font, stop animations, use a reading line or mask, have text read
+          aloud, jump through the page&rsquo;s headings, and change contrast, brightness, saturation or apply color-vision
+          filters. Your choices are saved on your device.
         </li>
       </ul>
 

@@ -1,5 +1,5 @@
-import { Archivo, Fraunces } from "next/font/google";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
+import { Archivo, Atkinson_Hyperlegible_Next, Fraunces, Lexend } from "next/font/google";
+import AccessibilityWidget from "@/components/a11y/AccessibilityWidget";
 import { PREPAINT_SCRIPT } from "@/lib/a11yPrefs";
 import "./globals.css";
 
@@ -12,6 +12,9 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
 });
+// accessibility-panel fonts. not preloaded: they only download once someone turns them on.
+const atkinson = Atkinson_Hyperlegible_Next({ subsets: ["latin"], variable: "--font-atkinson", display: "swap", preload: false });
+const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend", display: "swap", preload: false });
 
 export const metadata = {
   title: "Fat Fish",
@@ -26,7 +29,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     // the pre-paint script adds data-a11y-* attributes before React hydrates, hence the warning opt-out
-    <html lang="en" className={`${archivo.variable} ${fraunces.variable}`} suppressHydrationWarning>
+    <html lang="en" className={[archivo, fraunces, atkinson, lexend].map((f) => f.variable).join(" ")} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: PREPAINT_SCRIPT }} />
       </head>
