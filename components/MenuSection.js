@@ -20,7 +20,10 @@ export default function MenuSection({ section }) {
                 {(grp.items || []).map((item, idx) => (
                   <span key={item.name}>
                     {idx > 0 && " · "}
-                    <span className={item.available === false ? "is-out" : undefined}>{item.name}</span>
+                    <span className={item.available === false ? "is-out" : undefined}>
+                      {item.name}
+                      {item.available === false && <span className="sr-only"> (sold out)</span>}
+                    </span>
                   </span>
                 ))}
               </p>
@@ -33,7 +36,7 @@ export default function MenuSection({ section }) {
 
       {section.link?.href && (
         <a className="menu__link" href={section.link.href} target="_blank" rel="noopener">
-          {section.link.label || "View more"}
+          {section.link.label || "View Full " + section.title + " Menu"}
         </a>
       )}
     </Reveal>
@@ -53,7 +56,10 @@ function MenuList({ section }) {
                 item.parts.map((p, idx) => (
                   <span key={p.name}>
                     {idx > 0 && " · "}
-                    <span className={p.available === false ? "is-out" : undefined}>{p.name}</span>
+                    <span className={p.available === false ? "is-out" : undefined}>
+                      {p.name}
+                      {p.available === false && <span className="sr-only"> (sold out)</span>}
+                    </span>
                   </span>
                 ))
               ) : (

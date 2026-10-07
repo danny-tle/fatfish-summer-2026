@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap");
-
 :root {
   --ink:      #1c1a17;
   --ink-2:    #26241f;
@@ -9,9 +7,13 @@
   --line:     rgba(244,241,233,.14);
   --line-ink: rgba(28,26,23,.14);
   --gold:     #b89968;
+  /* darker variants for text on the cream background (AA contrast) */
+  --muted-ink: #6b665c;
+  --gold-ink:  #806338;
 
-  --grotesque: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --serif:     "Fraunces", Georgia, "Times New Roman", serif;
+  /* font vars come from next/font in app/layout.js */
+  --grotesque: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --serif:     var(--font-fraunces), Georgia, "Times New Roman", serif;
 
   --pad: clamp(20px, 5vw, 80px);
   --ease: cubic-bezier(.16, 1, .3, 1);
@@ -19,7 +21,14 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  color-scheme: dark;
+  /* keeps anchor jumps and keyboard focus clear of the fixed .bar */
+  scroll-padding-top: 88px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   margin: 0;
@@ -42,6 +51,22 @@ a { color: inherit; text-decoration: none; }
 }
 
 ::selection { background: var(--gold); color: var(--ink); }
+
+h1, h2, h3 { text-wrap: balance; }
+
+/* default keyboard focus ring. components that fill on focus override it. */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+/* main and the picker take focus programmatically, they aren't controls */
+main:focus, .picker:focus { outline: none; }
+
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 100;
+  padding: 10px 16px; border-radius: 2px;
+  background: var(--cream); color: var(--ink);
+  font-weight: 600; font-size: 13px; letter-spacing: .05em;
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; }
 
 .reveal {
   opacity: 0;
@@ -121,7 +146,7 @@ body.loc-fading #storyKicker,
 body.loc-fading .story__text,
 body.loc-fading .story__kicker { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
-  [data-locimg], #storyText, #storyKicker { transition: none; }
+  [data-locimg], #storyText, #storyKicker, .story__text, .story__kicker { transition: none; }
 }
 
 /* ---- toolbar ---- */
@@ -130,14 +155,13 @@ body.loc-fading .story__kicker { opacity: 0; }
   display: flex; align-items: center; justify-content: space-between;
   gap: 24px;
   padding: 16px var(--pad);
-  transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+  transition: background .4s var(--ease), border-color .4s var(--ease);
   border-bottom: 1px solid transparent;
 }
 .bar.is-stuck {
   background: rgba(28,26,23,.72);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border-bottom-color: var(--line);
-  padding-top: 12px; padding-bottom: 12px;
 }
 .bar__brand { display: flex; align-items: center; gap: 12px; }
 .bar__logo { display: block; line-height: 0; }
@@ -152,11 +176,12 @@ body.loc-fading .story__kicker { opacity: 0; }
   transition: opacity .25s var(--ease);
 }
 .bar__nav a::after {
-  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
-  background: var(--gold); transition: width .35s var(--ease);
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform .35s var(--ease);
 }
-.bar__nav a:hover { opacity: 1; }
-.bar__nav a:hover::after { width: 100%; }
+.bar__nav a:hover, .bar__nav a:focus-visible { opacity: 1; }
+.bar__nav a:hover::after, .bar__nav a:focus-visible::after { transform: scaleX(1); }
 .bar__actions { display: flex; align-items: center; gap: 14px; }
 
 .btn {
@@ -169,11 +194,11 @@ body.loc-fading .story__kicker { opacity: 0; }
 .btn--ghost {
   border: 1px solid var(--line); color: var(--cream); background: transparent;
 }
-.btn--ghost:hover { border-color: var(--cream); background: var(--cream); color: var(--ink); }
+.btn--ghost:hover, .btn--ghost:focus-visible { border-color: var(--cream); background: var(--cream); color: var(--ink); }
 .btn--solid {
   border: 1px solid var(--cream); background: var(--cream); color: var(--ink);
 }
-.btn--solid:hover { background: transparent; color: var(--cream); }
+.btn--solid:hover, .btn--solid:focus-visible { background: transparent; color: var(--cream); }
 /* keyline button: 2px border, fills on hover. order links + picker share it. */
 .btn--outline {
   border: 2px solid var(--cream); background: transparent; color: var(--cream);
@@ -297,6 +322,17 @@ body.loc-fading .story__kicker { opacity: 0; }
   transform: translateX(-100%); animation: scrollLine 2.4s var(--ease) infinite;
 }
 @keyframes scrollLine { 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll i::after { animation: none; transform: none; }
+}
+/* small-caps text button, same voice as the row it sits in */
+.hero__pause, .marquee__pause {
+  appearance: none; background: none; border: 0; padding: 4px 0; cursor: pointer;
+  font-family: var(--grotesque); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cream-2); opacity: .7; transition: opacity .25s var(--ease);
+}
+.hero__pause:hover, .hero__pause:focus-visible,
+.marquee__pause:hover, .marquee__pause:focus-visible { opacity: 1; }
 
 /* ---- social icons — no divider, they read as the top of the story block ---- */
 .social {
@@ -346,7 +382,7 @@ body.loc-fading .story__kicker { opacity: 0; }
 }
 .reviews__eyebrow {
   display: flex; align-items: center; gap: 14px;
-  font-family: var(--serif); font-style: italic; color: var(--gold);
+  font-family: var(--serif); font-style: italic; color: var(--gold-ink);
   font-size: clamp(14px, 1.5vw, 17px); margin: 0 0 clamp(30px, 5vw, 56px);
 }
 .reviews__stars { font-style: normal; letter-spacing: 2px; }
@@ -368,9 +404,9 @@ body.loc-fading .story__kicker { opacity: 0; }
   letter-spacing: .05em; text-transform: uppercase;
 }
 .reviews__name { font-weight: 700; color: var(--ink); }
-.reviews__meta { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 8px; color: var(--muted); }
-.reviews__rating { color: var(--gold); letter-spacing: 1px; }
-.reviews__dot { color: var(--muted); }
+.reviews__meta { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 8px; color: var(--muted-ink); }
+.reviews__rating { color: var(--gold-ink); letter-spacing: 1px; }
+.reviews__dot { color: var(--muted-ink); }
 
 /* subtle fade when JS swaps in the random pick */
 .reviews__card.is-swapping { opacity: 0; }
@@ -408,6 +444,11 @@ body.loc-fading .story__kicker { opacity: 0; }
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+/* hover / focus pauses it so a slide can be looked at; the button pauses it for good */
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track,
+.marquee.is-paused .marquee__track { animation-play-state: paused; }
+.marquee__pause { display: block; margin: clamp(18px, 2.4vw, 28px) auto 0; }
 @media (prefers-reduced-motion: reduce) {
   .marquee__track { animation: none; transform: translateX(-50%); }
 }
@@ -442,7 +483,7 @@ body.loc-fading .story__kicker { opacity: 0; }
   font-family: var(--serif); font-style: italic; font-size: 13px;
   color: var(--muted); transition: color .35s var(--ease);
 }
-.menu-tab:hover { color: var(--gold); }
+.menu-tab:hover, .menu-tab:focus-visible { color: var(--gold); }
 .menu-tab.is-active { background: var(--cream); color: var(--ink); }
 .menu-tab.is-active .menu-tab__addr { color: var(--ink); opacity: .6; }
 
@@ -530,7 +571,7 @@ body.loc-fading .story__kicker { opacity: 0; }
   transition: color .25s var(--ease), border-color .25s var(--ease);
 }
 .menu__link::after { content: "\2197"; font-style: normal; font-size: 14px; }
-.menu__link:hover { color: var(--cream); border-bottom-color: var(--cream); }
+.menu__link:hover, .menu__link:focus-visible { color: var(--cream); border-bottom-color: var(--cream); }
 
 .menu__cat {
   margin: 36px 0 18px; padding: 0;
@@ -563,7 +604,7 @@ body.loc-fading .story__kicker { opacity: 0; }
   transition: background .35s var(--ease), color .35s var(--ease);
 }
 .order-tab + .order-tab { border-left: 1px solid var(--line); }
-.order-tab:hover { color: var(--gold); }
+.order-tab:hover, .order-tab:focus-visible { color: var(--gold); }
 .order-tab.is-active { background: var(--cream); color: var(--ink); }
 
 .order__links { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; transition: opacity .25s var(--ease); }
@@ -581,6 +622,8 @@ body.loc-fading .story__kicker { opacity: 0; }
 }
 .visit__addr { margin: 0 0 6px; font-size: 17px; line-height: 1.5; }
 .visit__phone { margin: 0 0 26px; color: var(--gold); font-family: var(--serif); font-style: italic; font-size: 18px; }
+.visit__phone a { border-bottom: 1px solid transparent; transition: border-color .25s var(--ease); }
+.visit__phone a:hover, .visit__phone a:focus-visible { border-bottom-color: currentColor; }
 .visit__note { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 36ch; }
 .hours { margin: 0; }
 .hours > div { display: flex; gap: 18px; padding: 9px 0; border-top: 1px solid var(--line); }
@@ -599,8 +642,13 @@ body.loc-fading .story__kicker { opacity: 0; }
   background: var(--ink-2); border: 1px solid var(--line); border-radius: 2px;
   padding: 13px 14px; transition: border-color .3s var(--ease);
 }
-.contact__form input:focus, .contact__form textarea:focus { outline: none; border-color: var(--gold); }
+.contact__form input:focus, .contact__form textarea:focus {
+  outline: none; border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold);
+}
 .contact__form .btn { justify-self: start; margin-top: 6px; }
+.contact__status { margin: 0; font-size: 15px; line-height: 1.6; color: var(--cream-2); }
+.contact__status:empty { display: none; }
+.contact__status a { color: var(--gold); border-bottom: 1px solid currentColor; }
 
 /* ---- footer ---- */
 /* the footer is now just the parent-company band */

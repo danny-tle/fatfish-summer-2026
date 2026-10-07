@@ -22,7 +22,7 @@ export default async function HomePage() {
     <LocationProvider>
       <SplashPicker />
       <Header />
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         <Hero />
         <Social />
         <Story />

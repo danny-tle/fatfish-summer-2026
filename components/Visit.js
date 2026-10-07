@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
 import { LOCATIONS } from "@/lib/locations";
+import { telHref } from "@/lib/tel";
 
 // always shows both stores. doesn't follow the location picker.
 export default function Visit() {
@@ -11,7 +12,7 @@ export default function Visit() {
       <Reveal className="visit__place">
         <h3>{wv.label}</h3>
         <p className="visit__addr">{wv.address}<br />{wv.cityState}</p>
-        <p className="visit__phone">{wv.phone}</p>
+        <p className="visit__phone"><a href={telHref(wv.phone)}>{wv.phone}</a></p>
         <dl className="hours">
           {wv.hours.map((h) => (
             <div key={h.day}><dt>{h.day}</dt><dd>{h.time}</dd></div>
@@ -22,7 +23,7 @@ export default function Visit() {
       <Reveal className="visit__place">
         <h3>{bt.label}</h3>
         <p className="visit__addr">{bt.address}<br />{bt.cityState}</p>
-        <p className="visit__phone">{bt.phone}</p>
+        <p className="visit__phone"><a href={telHref(bt.phone)}>{bt.phone}</a></p>
         <p className="visit__note">{bt.note}</p>
       </Reveal>
     </section>

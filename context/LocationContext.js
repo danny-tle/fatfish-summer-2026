@@ -16,6 +16,15 @@ export function LocationProvider({ children }) {
     document.body.classList.toggle("loc-fading", fading);
   }, [fading]);
 
+  // keep the store in the url so a reload or a shared link comes back to it
+  useEffect(() => {
+    if (!activeId) return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("location") === activeId) return;
+    url.searchParams.set("location", activeId);
+    window.history.replaceState(window.history.state, "", url);
+  }, [activeId]);
+
   const setLocation = useCallback(
     (id, opts) => {
       if (!LOCATIONS[id] || id === activeId) return;

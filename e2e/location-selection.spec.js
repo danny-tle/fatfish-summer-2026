@@ -22,7 +22,7 @@ test("the mobile navigation exposes its expanded state", async ({ page }, testIn
   await page.goto("/");
   await chooseLocation(page, "West Valley");
 
-  const menuButton = page.getByRole("button", { name: "Open menu" });
+  const menuButton = page.getByRole("button", { name: "Menu", exact: true });
   await menuButton.click();
   await expect(menuButton).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Contact" })).toBeVisible();
