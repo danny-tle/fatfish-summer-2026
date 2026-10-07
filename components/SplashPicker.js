@@ -41,7 +41,7 @@ export default function SplashPicker() {
     const el = rootRef.current;
     if (!el?.parentElement) return;
     const behind = Array.from(el.parentElement.children).filter(
-      (n) => n !== el && n.matches("header, main, footer, .skip-link")
+      (n) => n !== el && n.matches("header, main, footer, .skip-link, .a11y")
     );
     behind.forEach((n) => (n.inert = open));
 

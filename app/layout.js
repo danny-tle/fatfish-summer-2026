@@ -1,4 +1,6 @@
 import { Archivo, Fraunces } from "next/font/google";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
+import { PREPAINT_SCRIPT } from "@/lib/a11yPrefs";
 import "./globals.css";
 
 // self-hosted + preloaded by next/font. the css vars feed --grotesque / --serif in globals.css
@@ -23,10 +25,15 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${fraunces.variable}`}>
+    // the pre-paint script adds data-a11y-* attributes before React hydrates, hence the warning opt-out
+    <html lang="en" className={`${archivo.variable} ${fraunces.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PREPAINT_SCRIPT }} />
+      </head>
       <body>
         <a className="skip-link" href="#top">Skip to Content</a>
         {children}
+        <AccessibilityWidget />
       </body>
     </html>
   );
