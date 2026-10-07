@@ -59,7 +59,7 @@
           ],
           "link": {
             "label": "View Sushi Rolls",
-            "href": "assets/pdf/west-valley-sushi-rolls.pdf"
+            "href": "/pdf/west-valley-sushi-rolls.pdf"
           }
         },
         {
@@ -462,7 +462,7 @@
           ],
           "link": {
             "label": "View Sushi Rolls",
-            "href": "assets/pdf/bountiful-sushi-rolls.pdf"
+            "href": "/pdf/bountiful-sushi-rolls.pdf"
           }
         },
         {

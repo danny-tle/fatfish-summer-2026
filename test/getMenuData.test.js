@@ -45,3 +45,17 @@ describe("getMenuData", () => {
     expect(fetchLocationDump).toHaveBeenCalledWith("https://toast.example", "test-token", "west-guid");
   });
 });
+
+describe("menu snapshot", () => {
+  it("links only to PDFs that exist in public/", async () => {
+    const { existsSync } = await import("node:fs");
+    const { default: snapshot } = await import("@/data/menu.json");
+    const hrefs = snapshot.locations.flatMap((loc) => loc.sections.map((s) => s.link?.href).filter(Boolean));
+
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) {
+      expect(href).toMatch(/^\//);
+      expect(existsSync("public" + href), href).toBe(true);
+    }
+  });
+});
