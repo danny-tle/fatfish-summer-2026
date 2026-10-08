@@ -629,6 +629,7 @@ body.loc-fading .story__kicker { opacity: 0; }
 .hours > div { display: flex; gap: 18px; padding: 9px 0; border-top: 1px solid var(--line); }
 .hours dt { width: 96px; flex: none; font-weight: 600; font-size: 14px; letter-spacing: .04em; }
 .hours dd { margin: 0; color: var(--muted); font-size: 15px; }
+.hours + .visit__note { margin-top: 18px; }
 
 /* ---- contact ---- */
 .contact { padding: clamp(70px, 10vw, 140px) var(--pad); border-top: 1px solid var(--line); }

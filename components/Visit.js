@@ -24,6 +24,11 @@ export default function Visit() {
         <h3>{bt.label}</h3>
         <p className="visit__addr">{bt.address}<br />{bt.cityState}</p>
         <p className="visit__phone"><a href={telHref(bt.phone)}>{bt.phone}</a></p>
+        <dl className="hours">
+          {bt.hours.map((h) => (
+            <div key={h.day}><dt>{h.day}</dt><dd>{h.time}</dd></div>
+          ))}
+        </dl>
         <p className="visit__note">{bt.note}</p>
       </Reveal>
     </section>
